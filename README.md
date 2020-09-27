@@ -1,4 +1,4 @@
-# PGROU - Cinésup
+# PGROU
 
 ## Outils utilisés
 
@@ -15,14 +15,7 @@ composer install
 ```
 
 ## Base de données
-
-La base utilisée est une base PostgreSQL. Le fichier SQL contenant le schéma de la base est présent dans l'archive qui a été rendue aux encadrants du projet.
-
-- nom de la base : `pgrou`
-- nom de l'utilisateur : `pgrou`
-- mot de passe : `pgrou`
-
-La base doit être possédée par l'utilisateur `pgrou`.
+pgrou
 
 ## Lancement du serveur
 
