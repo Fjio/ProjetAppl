@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CINESUP - Candidatures{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"/>
+{% endblock %}
+{% block scripts %}
+    {# A changer quand bootstrap sera intégré, cf https://datatables.net/download/ #}
+    {# <script type="text/javascript" src="{{ asset('js/jquery-3.4.1.min.js') }}"></script> #}
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.20/datatables.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/DataTables/dossiersCandidats.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+
+    <h1>Candidats </h1>
+
+    <table id="tableDossiers" class="display">
+        {# Header #}
+        <thead>
+        <tr>
+            <th>N° dossier</th>
+            <th>Moyenne</th>
+            <th>Note autobiographie</th>
+            <th>Note d'appréciation</th>
+            <th>Etat</th>
+            <th></th>
+        </tr>
+        </thead>
+        {# Liste des candidats #}
+        <tbody>
+        {% for dossier in listeDossiers %}
+            <tr>
+                <td>{{ dossier.numeroDossier }}</td>
+                <td>{{ dossier.noteMoyenneGenerale }} </td>
+                <td>{{ dossier.noteAutobiographie }} </td>
+                <td>{{ dossier.noteAppreciationDossier }} </td>
+                <td>
+                    {% if dossier.estTraite %}
+                        Traité
+                    {% else %}
+                        Non traité
+                    {% endif %}
+                </td>
+                <td>
+                    <form method="POST">
+                        <input type="hidden" name="idEleve" value="{{ dossier.idEleve }}">
+                        <button class="btn btn-outline-primary" formaction="{{ path('afficheCandidat') }}">Consulter
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        {% else %}
+            <p> Aucun dossier trouvé </p>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

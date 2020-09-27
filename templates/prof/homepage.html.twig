@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="col-4 offset-7  m-auto form-row">
+        <form method="POST">
+            <label class="text-center">Dossiers restant à traiter
+                : {{ statsDossiersTraites.nb_dossiers - statsDossiersTraites.nb_traites }}
+                / {{ statsDossiersTraites.nb_dossiers }}</label>
+            <button formaction="{{ path('dossiersCandidats') }}" class="btn btn-outline-primary btn-block mx-auto">
+                Consulter les dossiers
+            </button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+
+
+#eleve_Enregistrer, #annee_scolaire_Enregistrer, #notes_matiere_Enregistrer,#form_Soumettre,#candidature_section_Enregistrer {
+    border: 1px solid #662F9C;
+    background: #662F9C;
+       color: white;
+}
+
+fieldset {
+    border-radius: 5px;
+    border: 1px solid #662F9C;
+}
+
+.nav-pills .nav-link.active {
+    border: 1px solid #662F9C;
+    background-color: #662F9C;
+}
+
+.nav-pills .nav-link {
+    color: #A689B1;
+}
+
+#nav-eleve {
+    border: 1px solid #A689B1;
+    border-radius: 5px;
+}

@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Campagne de {{campagneActuelle.annee}}{% endblock %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css">
+{% endblock %}
+
+{% block scripts %}
+  {# A changer quand bootstrap sera intégré, cf https://datatables.net/download/ #}
+  {# <script type="text/javascript" src="{{ asset('js/jquery-3.4.1.min.js') }}"></script> #}
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.20/datatables.min.js"></script>
+  <script type="text/javascript" src="/js/DataTables/campagneActuelle.js"></script>
+{% endblock %}
+
+{% block body %}
+  <h1>Campagne de {{campagneActuelle.annee}}</h1>
+
+  <h2>Calendrier</h2>
+  {% for calendrier in calendriers %}
+    {{calendrier.descJalon}} : {{calendrier.date|date('d-m-Y')}}
+    <br/>
+  {% endfor %}
+
+  <h2>{{nombreDeDossiersTraites}} / {{nombreDeDossiers}} dossiers traités</h2>
+
+  <table id="dossiersCampagne" class="display">
+    <thead>
+      <tr>
+        <th>Numéro de dossier</th>
+        <th>Prénom</th>
+        <th>Nom</th>
+        <th>Professeur en charge du dossier</th>
+        <th>Traité ?</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for dossier in dossiers %}
+        <tr>
+          <td>{{dossier.numeroDossier}}</td>
+          <td>{{dossier.prenomEleve}}</td>
+          <td>{{dossier.nomEleve}}</td>
+          <td>
+            {% if (dossier.prenomProf != null) and (dossier.nomProf != null)  %}
+              {{dossier.prenomProf}} {{dossier.nomProf}}
+            {% else %}
+              /
+            {% endif %}
+          </td>
+          <td> 
+          {% if dossier.estTraite %}
+            Oui
+          {% else %}
+            Non
+          {% endif %}
+          </td>
+          <td>
+            <form action="{{path('modifierDossier', {'idCampagne': dossier.idCampagne, 'idEleve': dossier.idEleve})}}" method="POST">
+              <button>Modifier</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

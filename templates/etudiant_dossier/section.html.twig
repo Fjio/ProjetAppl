@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}CINESUP - Etudiant - Ma candidature à une section{% endblock %}
+
+
+{% block body %}
+
+    <div class="container col-6">
+        <h1>Mon choix de section</h1>
+    </div>
+        <div class="row">
+            <div class="container col-2" id="nav-eleve">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="{{ path('eleve_homepage') }}" role="tab" aria-controls="v-pills-home" aria-selected="false">Accueil</a>
+                    <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="{{ path('etudiant_dossier_administratif') }}" role="tab" aria-controls="v-pills-home" aria-selected="false">Administratif</a>
+                    <a class="nav-link active" id="v-pills-profile-tab" data-toggle="pill" href="{{ path('etudiant_dossier_choixsection') }}" role="tab" aria-controls="v-pills-profile" aria-selected="true">Choix section</a>
+                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="{{ path('etudiant_dossier_scolaire_parcours', {'annee':0}) }}" role="tab" aria-controls="v-pills-messages" aria-selected="false">Parcours scolaire</a>
+                    <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="{{ path('etudiant_dossier_scolaire_notes') }}" role="tab" aria-controls="v-pills-settings" aria-selected="false">Notes</a>
+                    <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="{{ path('etudiant_dossier_validation') }}" role="tab" aria-controls="v-pills-settings" aria-selected="false">Validation</a>
+                </div>
+            </div>
+    <div class="container">
+        <ul>
+            {% for contrainte in contrainteSectionTab  %}
+                <li>{{ contrainte.nomSection.nomSection }} : {{ contrainte.messageContrainte }}</li>
+            {% endfor %}
+        </ul>
+        {{ form(form) }}
+    </div>
+    </div>
+
+
+
+{% endblock %}
+
+

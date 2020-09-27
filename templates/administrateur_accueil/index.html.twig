@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CINESUP - Administrateur - Accueil{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Accueil Administrateur</h1>
+
+    <form method="POST">
+        <div class="text-center">
+            <button class="btn btn-outline-primary" formaction="{{ path('creation_campagne') }}">Création d'une nouvelle
+                campagne
+            </button>
+            <button class="btn btn-outline-primary" formaction="{{ path('campagne_actuelle') }}">Accéder à la campagne
+                actuelle
+            </button>
+        </div>
+    </form>
+{% endblock %}
+
+
+{% block javascripts %}{% endblock %}

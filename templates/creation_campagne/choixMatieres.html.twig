@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Choix des matières{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <fieldset>
+            <h2>Choix des matières et des coefficients pour chaque section</h2>
+            {% for section in sections %}
+                <h3> {{ section.nomSection }} </h3>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Matière</th>
+                        <th>Coefficient</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for coefficient in coefficients %}
+                        {% if section.nomSection == coefficient.nomSection %}
+                            <tr>
+                                <td>{{ coefficient.nomMatiere }}</td>
+                                <td>{{ coefficient.valeur }}</td>
+                                <td>
+                                    <form method="POST">
+                                        <button class="btn btn-outline-primary"
+                                                formaction="{{ path('supprimerCoefficient',{'idCampagne':idCampagne,
+                                                    'id':coefficient.idCoefficient}) }}" style="display:inline">
+                                            Supprimer
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                    <form action="{{ path('ajoutCoefficient', {'idCampagne': idCampagne, 'nomSection':section.nomSection}) }}"
+                          method="POST">
+                        <tr>
+                            <td>
+                                <select class="browser-default custom-select" name="matiere">
+                                    {% for matiere in matieres %}
+                                        <option value="{{ matiere.nomMatiere }}">{{ matiere.nomMatiere }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                            <td><input class="input-group-text" name="coeff" type="float"/></td>
+                            <td>
+                                <button class="btn btn-outline-primary" style="display:inline">Ajouter</button>
+                            </td>
+                        </tr>
+                    </form>
+                    </tbody>
+                </table>
+                <br/>
+
+
+            {% endfor %}
+
+            <form action="{{ path('ajoutElectifs', {'idCampagne': idCampagne}) }}" method="POST">
+                <button class="btn btn-outline-primary">Suivant</button>
+            </form>
+        </fieldset>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout des electifs{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <fieldset>
+            <h1>Ajout des electifs</h1>
+            <br/>
+            {% for matiere in matieres %}
+                {% if matiere.nature != 'matiere' %}
+                    <h3>{{ matiere.nomSection }} : {{ matiere.nomMatiere }}</h3>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Option possible</th>
+                            <th>Coefficient si différent de {{ matiere.valeur }}</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for possibilite in possibilites %}
+                            {% if (possibilite.nomMatiere == matiere.nomMatiere) and (possibilite.nomSection == matiere.nomSection) %}
+                                <tr>
+                                    <td>{{ possibilite.acronymeOption }}</td>
+                                    <td>
+                                        {% if possibilite.coefdifferent != null %}
+                                            {{ possibilite.coefdifferent }}
+                                        {% endif %}
+                                    </td>
+                                    <form method="POST">
+                                        <td>
+                                            <button class="btn btn-outline-primary"
+                                                    formaction="{{ path('supprimerOption',{'idCampagne':idCampagne, 'id':possibilite.idPossibiliteOption}) }}">
+                                                Supprimer
+                                            </button>
+                                        </td>
+                                    </form>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                        <form action="{{ path('ajoutOption', {'idCampagne': idCampagne, 'nomSection':matiere.nomSection, 'nomMatiere':matiere.nomMatiere}) }}"
+                              method="POST">
+                            <tr>
+                                <td>
+                                    <select class="browser-default custom-select" name="idOption">
+                                        {% if matiere.nature == 'specialite' %}
+                                            {% for specialite in specialites %}
+                                                <option value="{{ specialite.idOption }}">{{ specialite.acronymeOption }}</option>
+                                            {% endfor %}
+                                        {% elseif matiere.nature == 'option' %}
+                                            {% for option in options %}
+                                                <option value="{{ option.idOption }}">{{ option.acronymeOption }}</option>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </select>
+                                </td>
+                                <td><input name="coeffdifferent" type="float"></td>
+                                <td>
+                                    <button class="btn btn-outline-primary">Ajouter</button>
+                                </td>
+                            </tr>
+                        </form>
+                        </tbody>
+                    </table>
+                    <br/>
+                {% endif %}
+            {% endfor %}
+
+            <form action="{{ path('app_homepage') }}">
+                <button class="btn btn-outline-primary">Terminer</button>
+            </form>
+        </fieldset>
+    </div>
+
+
+{% endblock %}

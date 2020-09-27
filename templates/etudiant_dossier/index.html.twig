@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CINESUP - Etudiant - Mon dossier{% endblock %}
+
+{% block body %}
+    <h1 class="col-6 offset-4">Mon dossier</h1>
+        {# form(form) #} {# Génère automatiquement le form si décommenté#}
+
+    <div class="row">
+        <div class="container col-2" id="nav-eleve">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="{{ path('eleve_homepage') }}" role="tab" aria-controls="v-pills-home" aria-selected="false">Accueil</a>
+                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="{{ path('etudiant_dossier_administratif') }}" role="tab" aria-controls="v-pills-home" aria-selected="false">Administratif</a>
+                <a class="nav-link " id="v-pills-profile-tab" data-toggle="pill" href="{{ path('etudiant_dossier_choixsection') }}" role="tab" aria-controls="v-pills-profile" aria-selected="true">Choix section</a>
+                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="{{ path('etudiant_dossier_scolaire_parcours', {'annee':0}) }}" role="tab" aria-controls="v-pills-messages" aria-selected="false">Parcours scolaire</a>
+                <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="{{ path('etudiant_dossier_scolaire_notes') }}" role="tab" aria-controls="v-pills-settings" aria-selected="false">Notes</a>
+                <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="{{ path('etudiant_dossier_validation') }}" role="tab" aria-controls="v-pills-settings" aria-selected="false">Validation</a>
+            </div>
+        </div>
+        <div class="container">
+            {#ce qui est dessous est à titre d'exemple #}
+            <div class="well">
+                {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+                {# Les erreurs générales du formulaire. #}
+                {{ form_errors(form) }}
+                <fieldset>
+                    <fieldset class="border border-secondary">
+                        {# Génération du label + error + widget pour un champ. #}
+                        <h2 class="col-6 offset-0">Mes Informations</h2>
+                        <div class="col-10 offset-0">
+                            {{ form_row(form.idPersonne.nom) }}
+                        </div>
+
+                        {# Génération manuelle et éclatée : #}
+                        <div>
+                            <div class="form-group">
+                                {# Génération du label. #}
+                                {{ form_label(form.idPersonne.prenom, "Prénom", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+
+                                {# Affichage des erreurs pour ce champ précis. #}
+                                {{ form_errors(form.idPersonne.prenom) }}
+
+                                <div class="col-sm-10">
+                                    {# Génération de l'input. #}
+                                    {{ form_widget(form.idPersonne.prenom, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                        </div>
+
+                        {# Idem pour un autre champ. #}
+                        <div style="border: 0px">
+                            <div class="form-group">
+                                {{ form_label(form.dateNaissance, "Date de Naissance", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+                                {{ form_errors(form.dateNaissance) }}
+                                <div class="col-sm-10">
+                                    {{ form_widget(form.dateNaissance, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-10">
+                            {{ form_row(form.idPersonne.mail) }}
+                            {{ form_row(form.idPersonne.tel) }}
+
+                            {{ form_row(form.idPersonne.numeroRue) }}
+                            {{ form_row(form.idPersonne.codePostal) }}
+                            {{ form_row(form.idPersonne.localite) }}
+                            {{ form_row(form.idPersonne.pays) }}
+                        </div>
+
+                    </fieldset>
+
+                    <fieldset class="border border-secondary">
+                        <div class="col-sm-10">
+                            <h2 class="col-10 offset-0"> Informations du Responsable Légal</h2>
+                            {# Génération du label + error + widget pour un champ. #}
+                            {{ form_row(form.idResponsable.idResponsable.nom) }}
+                            {{ form_row(form.idResponsable.idResponsable.prenom) }}
+                            {{ form_row(form.idResponsable.qualite) }}
+                            {{ form_row(form.idResponsable.idResponsable.mail) }}
+                            {{ form_row(form.idResponsable.idResponsable.tel) }}
+
+                            {{ form_row(form.idResponsable.idResponsable.numeroRue) }}
+                            {{ form_row(form.idResponsable.idResponsable.codePostal) }}
+                            {{ form_row(form.idResponsable.idResponsable.localite) }}
+                            {{ form_row(form.idResponsable.idResponsable.pays) }}
+                        </div>
+                    </fieldset>
+
+
+                    {# Génération automatique des champs pas encore écrits.
+        Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+        et tous les champs cachés (type « hidden »). #}
+                    {{ form_rest(form) }}
+                </fieldset>
+                {# Fermeture de la balise <form> du formulaire HTML #}
+                {{ form_end(form) }}
+
+            </div>
+        </div>
+
+</div>
+
+{% endblock %}
+
+

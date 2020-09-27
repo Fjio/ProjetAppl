@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création d'une campagne{% endblock %}
+
+{% block body %}
+
+    <h1 class="col-8 offset-2">Création d'une nouvelle campagne</h1>
+    <br/>
+
+{# Les coefficients ci-dessous sont exprimés en % #}
+<form action="{{path('ajoutCampagne')}}" method="POST">
+    <fieldset class="border border-secondary col-10 offset-1">
+        <h2 class="col-8 offset-0">Paramètres de la campagne</h2>
+        <div class="container">
+            <div class="row">
+                <label style="margin: 10px">Année de la campagne</label>
+                <input class="form-control col-2" type="number" name="annee" value="2020">
+            </div>
+            <div class="row">
+                <label style="margin: 10px">Coefficient de la note de moyenne générale</label>
+                <input class="form-control col-2" type="number" name="coefMG" value="5">
+            </div>
+            <div class="row">
+                <label style="margin: 10px">Maximum de la note de moyenne générale</label>
+                <input class="form-control col-2" type="number" name="maxMG" value="20">
+            </div>
+            <div class="row">
+                <label style="margin: 10px">Coefficient de la note d'autobiographie</label>
+                <input class="form-control col-2" type="number" name="coefAB" value="4">
+            </div>
+            <div class="row">
+                <label style="margin: 10px">Maximum de la note d'autobiographie</label>
+                <input class="form-control col-2" type="number" name="maxAB" value="20">
+            </div>
+            <div class="row">
+                <label style="margin: 10px">Coefficient de la note d'appréciation du dossier</label>
+                <input class="form-control col-2" type="number" name="coefAD" value="1">
+            </div>
+            <div class="row">
+                <label style="margin: 10px">Maximum de la note d'appréciation du dossier</label>
+                <input class="form-control col-2" type="number" name="maxAD" value="5">
+            </div>
+
+        </div>
+    </fieldset>
+
+    <fieldset class="border border-secondary col-10 offset-1">
+        <h2 class="col-6 offset-0">Calendrier de la campagne</h2>
+        {# datetime-local fonctionne avec Google Chrome mais ne fonctionne pas avec safari #}
+        <div class="container">
+            <p>
+                Format des dates : jj/mm/aaaa hh:mm
+                <br/>
+                Il vaut mieux utiliser Google Chrome car le format est déjà présent
+            <p>
+            <div>
+                <div class="row">
+                    <label style="margin: 10px">Ouverture des candidatures</label>
+                    <input class="form-control col-3" type="datetime-local" name="ouvCan">
+                </div>
+                <div class="row">
+                    <label style="margin: 10px">Fermeture des candidatures</label>
+                    <input class="form-control col-3" type="datetime-local" nam="ferCan">
+                </div>
+                <div class="row">
+                    <label style="margin: 10px">Resultats de la phase d'admissibilité</label>
+                    <input class="form-control col-3" type="datetime-local" name="resAdmissibilite">
+                </div>
+                <div class="row">
+                    <label style="margin: 10px">Resultat de la phase d'admission</label>
+                    <input class="form-control col-3" type="datetime-local" name="resAdmission">
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <button class="btn btn-outline-primary btn-block m-auto" style="width: 200px;" type="submit">Création de la
+        campagne
+    </button>
+</form>
+
+{% endblock %}

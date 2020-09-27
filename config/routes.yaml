@@ -1,0 +1,10 @@
+login:
+  path: /
+  controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+  defaults:
+    path: /login
+    permanent: true
+
+formDossierEtudiant:
+  path: /etudiant/dossier
+  controller: App\Controller\DossierEtudiant
