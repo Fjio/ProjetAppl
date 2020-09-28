@@ -17,6 +17,15 @@ composer install
 ## Base de données
 pgrou
 
+To seed your database with test data, run the following:
+
+```bash
+php bin/console doctrine:fixtures:load
+```
+
+The default login information for the admin user are:
+`admin@admin.fr`:`admin`
+
 ## Lancement du serveur
 
 Pour lancer le serveur, exécuter à la racine du projet :
