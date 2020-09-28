@@ -23,7 +23,7 @@ To seed your database with test data, run the following:
 php bin/console doctrine:fixtures:load
 ```
 
-The default login information for the admin user are:
+The default login info for the admin user are:
 `admin@admin.fr`:`admin`
 
 ## Lancement du serveur
