@@ -1,5 +1,6 @@
-# PGROU
-
+# PGROU & PAPPL
+Pages de gestion et de connexion par PGROU
+Page d'inscription et améliorations de code par Fjio
 ## Outils utilisés
 
 - Symfony CLI v4.13.3
@@ -15,6 +16,7 @@ composer install
 ```
 
 ## Base de données
+
 pgrou
 
 To seed your database with test data, run the following:
