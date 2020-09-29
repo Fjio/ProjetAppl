@@ -1,36 +1,44 @@
-# PGROU & PAPPL
-Pages de gestion et de connexion par PGROU
-Page d'inscription et améliorations de code par Fjio
-## Outils utilisés
+# PGROU 2019-2020 & PAPPL 2020-2021 - Ecole Centrale de Nantes
+
+Connection & management pages by PGROU
+Sign in & code upgrade by PAPPL : Fjio & IrNRV
+
+## Used tools
 
 - Symfony CLI v4.13.3
 - Composer v1.10.1
 - PostgreSQL v11.5
 
-## Installation des dépendances
+## Dependencies installation
 
-A la racine du projet :
+To install dependencies, run the following from the project root :
 
 ```bash
 composer install
 ```
 
-## Base de données
+## Database
+The default login information for the database  is:
+`pgrou`:`pgrou` with db `pgrou`
 
-pgrou
-
-To seed your database with test data, run the following:
+To seed your database with test data, run the following from the project root:
 
 ```bash
 php bin/console doctrine:fixtures:load
 ```
 
-The default login information for the admin user are:
+The default login information for the admin user is:
 `admin@admin.fr`:`admin`
 
-## Lancement du serveur
+The default login information for the eleve user is:
+`eleve1@eleve.fr`:`eleve`
 
-Pour lancer le serveur, exécuter à la racine du projet :
+The default login information for the prof user is:
+`prof1@prof.fr`:`prof`
+
+## Server launch
+
+To start the server, run the following from the project root (CLI needed) :
 
 ```bash
 symfony server:start
