@@ -1,6 +1,6 @@
 # PGROU 2019-2020 & PAPPL 2020-2021 - Ecole Centrale de Nantes
 
-Connection & management pages by PGROU
+Connection & management pages by PGROU\
 Sign in & code upgrade by PAPPL : Fjio & IrNRV
 
 ## Used tools
