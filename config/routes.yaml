@@ -2,7 +2,7 @@ login:
   path: /
   controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
   defaults:
-    path: /login
+    path: /inscription
     permanent: true
 
 formDossierEtudiant:
