@@ -13,10 +13,11 @@
         {% endblock %}
     </head>
     <body>
-    <div class="col-8 offset-4 m-auto text-center">
-        <img src="{{ asset('img/lycee_guisthau.png') }}" alt="Lycée Guist'hau" class="rounded mx-auto d-block">
-        <h1 class="col-10 offset-4 mx-auto" style="margin: 20px">Classe Préparatoire Ciné-Sup</h1>
+    <div class="col-10 offset-4 m-auto text-center d-none d-sm-block">
+        <img src="{{ asset('img/lycee_guisthau.png') }}" alt="Lycée Guist'hau" class="rounded mx-auto">
     </div>
+        <h1 class="col-12 offset-4 mx-auto text-center d-none d-md-block" style="margin: 20px">🎥 Classe Préparatoire Ciné-Sup 🎥</h1>
+        <h1 class="col-12 offset-4 mx-auto text-center d-md-none" style="margin: 20px">🎥  Ciné-Sup 🎥</h1>
     {% block body %}{% endblock %}
 
     {% block javascripts %}{% endblock %}
