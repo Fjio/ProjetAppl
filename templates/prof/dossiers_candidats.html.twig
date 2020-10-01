@@ -3,6 +3,7 @@
 {% block title %}CINESUP - Candidatures{% endblock %}
 
 {% block scripts %}
+
     {# A changer quand bootstrap sera intégré, cf https://datatables.net/download/ #}
     {# <script type="text/javascript" src="{{ asset('js/jquery-3.4.1.min.js') }}"></script> #}
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.20/datatables.min.js"></script>
@@ -12,10 +13,10 @@
 {% block body %}
 
     <h1>Candidats </h1>
-
-    <table id="tableDossiers" class="table">
+    <div class="table-responsive-lg">
+    <table id="tableDossiers" class="table table-dark">
         {# Header #}
-        <thead>
+        <thead class="bg-info">
         <tr>
             <th>N° dossier</th>
             <th>Moyenne</th>
@@ -43,7 +44,7 @@
                 <td>
                     <form method="POST">
                         <input type="hidden" name="idEleve" value="{{ dossier.idEleve }}">
-                        <button class="btn btn-outline-primary" formaction="{{ path('afficheCandidat') }}">Consulter
+                        <button class="btn btn-light btn-block" formaction="{{ path('afficheCandidat') }}">Consulter
                         </button>
                     </form>
                 </td>
@@ -53,5 +54,6 @@
         {% endfor %}
         </tbody>
     </table>
+    </div>
 
 {% endblock %}

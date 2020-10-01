@@ -10,8 +10,8 @@
             {% for matiere in matieres %}
                 {% if matiere.nature != 'matiere' %}
                     <h3>{{ matiere.nomSection }} : {{ matiere.nomMatiere }}</h3>
-                    <table class="table">
-                        <thead>
+                    <table class="table table-dark">
+                        <thead class="bg-info">
                         <tr>
                             <th>Option possible</th>
                             <th>Coefficient si différent de {{ matiere.valeur }}</th>
