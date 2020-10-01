@@ -2,15 +2,16 @@
 
 {% block title %}Campagne de {{campagneActuelle.annee}}{% endblock %}
 
-
 {% block scripts %}
-  {# A changer quand bootstrap sera intégré, cf https://datatables.net/download/ #}
-  {# <script type="text/javascript" src="{{ asset('js/jquery-3.4.1.min.js') }}"></script> #}
+  {# A changer quand bootstrap sera intégré, cf https://datatables.net/download/
+  <script type="text/javascript" src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.20/datatables.min.js"></script>
   <script type="text/javascript" src="/js/DataTables/campagneActuelle.js"></script>
+  #}
 {% endblock %}
 
 {% block body %}
+  <div class = "text-center">
   <h1>Campagne de {{campagneActuelle.annee}}</h1>
 
   <h2>Calendrier</h2>
@@ -19,12 +20,12 @@
     <br/>
   {% endfor %}
 
-  <h2>{{nombreDeDossiersTraites}} / {{nombreDeDossiers}} dossiers traités</h2>
+  <h2 style="margin:20px"> {{nombreDeDossiersTraites}} / {{nombreDeDossiers}} dossiers traités</h2>
 
-  <table id="dossiersCampagne" class="display">
+  <table id="dossiersCampagne" class="table">
     <thead>
       <tr>
-        <th>Numéro de dossier</th>
+        <th class>Numéro de dossier</th>
         <th>Prénom</th>
         <th>Nom</th>
         <th>Professeur en charge du dossier</th>
@@ -61,5 +62,6 @@
       {% endfor %}
     </tbody>
   </table>
+  </div>
 
 {% endblock %}
