@@ -8,7 +8,7 @@
             {% if error %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
-
+            {# need to reconnect or change page, redirection still to make hereafter #}
             {% if app.user %}
                 <div class="mb-3">
                     Connecté en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
@@ -20,9 +20,9 @@
             <div class="col-8 offset-4 mx-auto">
                     <form method="POST">
                         <div class="form-group mx-auto" style="width: 250px;">
-                            <h1 class="h3 mx-auto font-weight-normal">Connectez-vous</h1>
+                            <h1 class="h4 mx-auto font-weight-normal">Connectez-vous</h1>
                             <label for="inputUsername" class=" mx-auto sr-only">Email</label>
-                            <input type="text" placeholder="Email" value="{{ last_username }}" name="username"
+                            <input type="text" style="margin-bottom:10px" placeholder="Email" value="{{ last_username }}" name="username"
                                    id="inputUsername" class="form-control" required autofocus>
                             <label for="inputPassword" class="sr-only">Mot de passe</label>
                             <input type="password" name="password" id="inputPassword" class="form-control"

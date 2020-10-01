@@ -11,6 +11,7 @@
 
 {% block body %}
     <form><button formAction="{{path('campagne_actuelle')}}">Retour</button></form>
+    <div class="text-center">
     <h1>Dossier {{ dossier.numeroDossier }}</h1>
     <p>Etat du dossier :
         {% if dossier.estTraite %}
@@ -111,4 +112,5 @@
 
     <p>Noter le dossier :</p>
     {{ render(controller('App\\Controller\\CampagneActuelleController::evaluerCandidatAdmin', {'idEleve': idEleve, 'idCampagne': idCampagne})) }}
+    </div>
 {% endblock %}
