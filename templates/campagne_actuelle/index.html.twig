@@ -25,13 +25,13 @@
         <th>Nom</th>
         <th>Professeur en charge du dossier</th>
         <th>Traité ?</th>
-        <th></th>
+        <th> </th>
       </tr>
     </thead>
     <tbody>
       {% for dossier in dossiers %}
         <tr>
-          {{dossier.numeroDossier}}</td>
+          <td class="align-middle">{{dossier.numeroDossier}}</td>
           <td class="align-middle">{{dossier.prenomEleve}}</td>
           <td class="align-middle">{{dossier.nomEleve}}</td>
           <td class="align-middle">
