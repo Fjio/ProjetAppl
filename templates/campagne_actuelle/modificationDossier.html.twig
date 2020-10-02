@@ -1,116 +1,153 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Dossier {{ dossier.numeroDossier }}{% endblock %}
+{% block title %}Dossier
+	{{ dossier.numeroDossier }}
+{% endblock %}
 
-{% block scripts %}
-    {# A changer quand bootstrap sera intégré, cf https://datatables.net/download/ #}
-    {# <script type="text/javascript" src="{{ asset('js/jquery-3.4.1.min.js') }}"></script> #}
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.20/datatables.min.js"></script>
-    <script type="text/javascript" src="{{ asset('js/DataTables/dossier.js') }}"></script>
+{% block javascripts %}
+	<script type="text/javascript" src="{{ asset('js/DataTables/dossier.js') }}"></script>
 {% endblock %}
 
 {% block body %}
-    <form><button formAction="{{path('campagne_actuelle')}}">Retour</button></form>
-    <div class="text-center">
-    <h1>Dossier {{ dossier.numeroDossier }}</h1>
-    <p>Etat du dossier :
-        {% if dossier.estTraite %}
-            Traité
-        {% else %}
-            Non traité
-        {% endif %}
-    </p>
-    <p>Nom : {{ dossier.idEleve.idPersonne.nom }}</p>
-    <p>Prénom : {{ dossier.idEleve.idPersonne.prenom }}</p>
-    <p>Date de naissance : {{ dossier.idEleve.dateNaissance|date("m/d/Y") }}</p>
-    <p>Localité : {{ dossier.idEleve.idPersonne.localite }}</p>
-    <p>Moyenne générale :
-        {% if dossier.noteMoyenneGenerale is empty %}
-            La moyenne générale n'est pas calculée
-        {% else %}
-            {{ dossier.noteMoyenneGenerale }}
-        {% endif %}
-    </p>
-    {# faire en sorte que la modif se fasse dès que l'on change le form, rajouter le cas où il n'y a pas encore de prof assigné #}
-    <form action="{{path('assignationProf',{'idCampagne':idCampagne, 'idEleve':idEleve})}}" method="POST">
-        <p>
-            {% if dossier.idProfAssigne != null %}
-                Le professeur assigné au dossier est : {{ dossier.idProfAssigne.prenom }} {{ dossier.idProfAssigne.nom }}
-            {% else %}
-                Il n'y a pas de professeur assigné au dossier
-            {% endif %}
-            <br/>
-            Remplacer le professeur par : 
-            <select name="profassigne">
-                {% for prof in profs %}
-                    <option  value="{{prof.idPersonne}}">{{prof.prenom}} {{prof.nom}}</option>
-                {% endfor %}
-            </select>
-            <button>Modifier</button>
-    </form>
-    <p>Notes :</p>
-    <table id="notes" class="table table-dark">
-        {# Header #}
-        <thead class="bg-info">
-        <tr>
-            <th>Matière</th>
-            <th>Note min classe</th>
-            <th>Note max classe</th>
-            <th>Note moy classe</th>
-            <th>Note élève</th>
-        </tr>
-        </thead>
-        {# Liste des notes #}
-        <tbody>
-        {% for note in notes %}
-            <tr>
-                <td>
-                    {% if note.idOption is empty %}
-                        {{ note.nomMatiere.nomMatiere }}
-                    {% else %}
-                        {{ note.nomMatiere.nomMatiere }} - {{ note.idOption.acronymeOption }}
-                    {% endif %}
-                </td>
-                <td>{% if note.noteMinClasse is empty %}-{% else %}{{ note.noteMinClasse }}{% endif %}</td>
-                <td>{% if note.noteMaxClasse is empty %}-{% else %}{{ note.noteMaxClasse }}{% endif %}</td>
-                <td>{% if note.noteMoyClasse is empty %}-{% else %}{{ note.noteMoyClasse }}{% endif %}</td>
-                <td>{{ note.noteEleve }} </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<div class="container">
+		<form>
+			<button formaction="{{path('campagne_actuelle')}}">Retour</button>
+		</form>
+		<h1>Dossier
+			{{ dossier.numeroDossier }}</h1>
+		<p>Etat du dossier :
+			{% if dossier.estTraite %}
+				Traité
+			{% else %}
+				Non traité
+			{% endif %}
+		</p>
+		<p>Nom :
+			{{ dossier.idEleve.idPersonne.nom }}</p>
+		<p>Prénom :
+			{{ dossier.idEleve.idPersonne.prenom }}</p>
+		<p>Date de naissance :
+			{{ dossier.idEleve.dateNaissance|date("m/d/Y") }}</p>
+		<p>Localité :
+			{{ dossier.idEleve.idPersonne.localite }}</p>
+		<p>Moyenne générale :
+			{% if dossier.noteMoyenneGenerale is empty %}
+				La moyenne générale n'est pas calculée
+			{% else %}
+				{{ dossier.noteMoyenneGenerale }}
+			{% endif %}
+		</p>
+		{# faire en sorte que la modif se fasse dès que l'on change le form, rajouter le cas où il n'y a pas encore de prof assigné #}
+		<form action="{{path('assignationProf',{'idCampagne':idCampagne, 'idEleve':idEleve})}}" method="POST">
+			<p>
+				{% if dossier.idProfAssigne != null %}
+					Le professeur assigné au dossier est :
+					{{ dossier.idProfAssigne.prenom }}
+					{{ dossier.idProfAssigne.nom }}
+				{% else %}
+					Il n'y a pas de professeur assigné au dossier
+				{% endif %}
+				<br/>
+				Remplacer le professeur par :
+				<select name="profassigne">
+					{% for prof in profs %}
+						<option value="{{prof.idPersonne}}">{{prof.prenom}}
+							{{prof.nom}}</option>
+					{% endfor %}
+				</select>
+				<button class="btn btn-primary">Modifier</button>
+			</p>
+		</form>
+		<p>Notes :</p>
+		<table
+			id="notes" class="table table-dark">
+			{# Header #}
+			<thead class="bg-info">
+				<tr>
+					<th>Matière</th>
+					<th>Note min classe</th>
+					<th>Note max classe</th>
+					<th>Note moy classe</th>
+					<th>Note élève</th>
+				</tr>
+			</thead>
+			{# Liste des notes #}
+			<tbody>
+				{% for note in notes %}
+					<tr>
+						<td>
+							{% if note.idOption is empty %}
+								{{ note.nomMatiere.nomMatiere }}
+							{% else %}
+								{{ note.nomMatiere.nomMatiere }}
+								-
+								{{ note.idOption.acronymeOption }}
+							{% endif %}
+						</td>
+						<td>
+							{% if note.noteMinClasse is empty %}-
+							{% else %}
+								{{ note.noteMinClasse }}
+							{% endif %}
+						</td>
+						<td>
+							{% if note.noteMaxClasse is empty %}-
+							{% else %}
+								{{ note.noteMaxClasse }}
+							{% endif %}
+						</td>
+						<td>
+							{% if note.noteMoyClasse is empty %}-
+							{% else %}
+								{{ note.noteMoyClasse }}
+							{% endif %}
+						</td>
+						<td>{{ note.noteEleve }}
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
 
-    <p>Parcours scolaire :</p>
-    <table id="anneesScolaires" class="table table-dark">
-        <thead class="bg-info">
-            <tr>
-                <th>Année</th>
-                <th>Classe</th>
-                <th>Spécialité</th>
-                <th>Etablissement</th>
-                <th>Adresse</th>
-                <th>Ville</th>
-                <th>Code postal</th>
-                <th>Pays</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for annee in anneesScolaires %}
-                <tr>
-                    <td>{{ annee.annee }}</td>
-                    <td>{{ annee.classe }}</td>
-                    <td>{% if annee.specialite is empty %}-{% else %}{{ annee.specialite }}{% endif %}</td>
-                    <td>{{ annee.etablissement }}</td>
-                    <td>{{ annee.numeroRue }}, {{ annee.nomRue }}</td>
-                    <td>{{ annee.ville }}</td>
-                    <td>{{ annee.codePostal }}</td>
-                    <td>{{ annee.pays }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
 
-    <p>Noter le dossier :</p>
-    {{ render(controller('App\\Controller\\CampagneActuelleController::evaluerCandidatAdmin', {'idEleve': idEleve, 'idCampagne': idCampagne})) }}
-    </div>
+		<p>Parcours scolaire :</p>
+		<table id="anneesScolaires" class="table table-dark">
+			<thead class="bg-info">
+				<tr>
+					<th>Année</th>
+					<th>Classe</th>
+					<th>Spécialité</th>
+					<th>Etablissement</th>
+					<th>Adresse</th>
+					<th>Ville</th>
+					<th>Code postal</th>
+					<th>Pays</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for annee in anneesScolaires %}
+					<tr>
+						<td>{{ annee.annee }}</td>
+						<td>{{ annee.classe }}</td>
+						<td>
+							{% if annee.specialite is empty %}-
+							{% else %}
+								{{ annee.specialite }}
+							{% endif %}
+						</td>
+						<td>{{ annee.etablissement }}</td>
+						<td>{{ annee.numeroRue }},
+							{{ annee.nomRue }}</td>
+						<td>{{ annee.ville }}</td>
+						<td>{{ annee.codePostal }}</td>
+						<td>{{ annee.pays }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<p>Noter le dossier :</p>
+		{{ render(controller('App\\Controller\\CampagneActuelleController::evaluerCandidatAdmin',
+     {'idEleve': idEleve, 'idCampagne': idCampagne})) }}
+	</div>
 {% endblock %}

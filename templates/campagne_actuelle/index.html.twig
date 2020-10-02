@@ -36,26 +36,26 @@
     <tbody>
       {% for dossier in dossiers %}
         <tr>
-          <td>{{dossier.numeroDossier}}</td>
-          <td>{{dossier.prenomEleve}}</td>
-          <td>{{dossier.nomEleve}}</td>
-          <td>
+          {{dossier.numeroDossier}}</td>
+          <td class="align-middle">{{dossier.prenomEleve}}</td>
+          <td class="align-middle">{{dossier.nomEleve}}</td>
+          <td class="align-middle">
             {% if (dossier.prenomProf != null) and (dossier.nomProf != null)  %}
               {{dossier.prenomProf}} {{dossier.nomProf}}
             {% else %}
               /
             {% endif %}
           </td>
-          <td> 
+          <td class="align-middle"> 
           {% if dossier.estTraite %}
             Oui
           {% else %}
             Non
           {% endif %}
           </td>
-          <td>
+          <td class="align-middle">
             <form action="{{path('modifierDossier', {'idCampagne': dossier.idCampagne, 'idEleve': dossier.idEleve})}}" method="POST">
-              <button>Modifier</button>
+              <button class="btn btn-primary">Modifier</button>
             </form>
           </td>
         </tr>
