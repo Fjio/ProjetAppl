@@ -1,16 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}Accueil
+{% endblock %}
 
 {% block body %}
-    <div class="col-4 offset-7  m-auto form-row">
-        <form method="POST">
-            <label class="text-center">Dossiers restant à traiter
-                : {{ statsDossiersTraites.nb_dossiers - statsDossiersTraites.nb_traites }}
-                / {{ statsDossiersTraites.nb_dossiers }}</label>
-            <button class="btn btn-primary" formaction="{{ path('dossiersCandidats') }}" class="btn btn-outline-primary btn-block mx-auto">
-                Consulter les dossiers
-            </button>
-        </form>
-    </div>
+	<div class="container text-center">
+		<form method="POST">
+			<h2 class="mb-4">
+				Dossiers à traiter :
+				{{ statsDossiersTraites.nb_dossiers - statsDossiersTraites.nb_traites }}
+				/
+				{{ statsDossiersTraites.nb_dossiers }}
+			</h2>
+			<button class="btn btn-primary" formaction="{{ path('dossiersCandidats') }}" class="btn btn-outline-primary btn-block mx-auto">
+				Consulter les dossiers
+			</button>
+		</form>
+	</div>
 {% endblock %}
