@@ -20,29 +20,32 @@
 			<div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
-						<a class="nav-link" href="#">🎓 Lycée Guist'hau - Nantes</a>
+						<a class="nav-link">🎓 Lycée Guist'hau - Nantes</a>
 					</li>
 				</ul>
 			</div>
-			<div class="mx-auto order-0">
-				<a class="navbar-brand mx-auto" href="#">🎥  Classe Préparatoire Ciné-Sup</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-			</div>
 			{% if app.user %}
+				<div class="mx-auto order-0">
+					<a class="navbar-brand mx-auto" href="{{ path('app_homepage') }}">🎥  Classe Préparatoire Ciné-Sup</a>
+					<button class="navbar-toggler ml-sm-a" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+				</div>
 				<div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active">
-							<a class="nav-link" href="{{ path('app_homepage') }}">Accueil</a>
-						</li>
-                        <li class="nav-item active">
 							<a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
 						</li>
 					</ul>
 				</div>
-            {% else %}
-                <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+			{% else %}
+				<div class="mx-auto order-0">
+					<a class="navbar-brand mx-auto" href="{{ path('app_login') }}">🎥  Classe Préparatoire Ciné-Sup</a>
+					<button class="navbar-toggler ml-lg-5" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+				</div>
+				<div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active">
 							<a class="nav-link" href="#">S'inscrire</a>
@@ -55,7 +58,7 @@
 			{% endif %}
 		</nav>
 		<!-- deleted old way of importing name of lycee through a picture (?!)
-		        added a beautiful navbar -->
+				        added a beautiful navbar -->
 
 		{% block body %}{% endblock %}
 
