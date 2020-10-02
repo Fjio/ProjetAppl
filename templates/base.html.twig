@@ -17,7 +17,7 @@
 		{% block scripts %}{% endblock %}
 	</head>
 	<body>
-		<nav class="navbar navbar-expand-md navbar-dark" style="background-color:#808080">
+		<nav class="navbar navbar-expand-md navbar-dark mb-4" style="background-color:#808080">
 			<div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
@@ -36,6 +36,9 @@
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active">
 							<a class="nav-link" href="{{ path('app_homepage') }}">Accueil</a>
+						</li>
+                        <li class="nav-item active">
+							<a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
 						</li>
 					</ul>
 				</div>
