@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block body %}
-    <form><button formAction="{{ path('dossiersCandidats') }}">Retour</button></form>
+    <form><button class="btn btn-primary" formAction="{{ path('dossiersCandidats') }}">Retour</button></form>
     <h1>Dossier {{ dossier.numeroDossier }}</h1>
     <p>Etat du dossier :
         {% if dossier.estTraite %}

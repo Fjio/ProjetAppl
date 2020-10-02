@@ -8,7 +8,7 @@
             <label class="text-center">Dossiers restant à traiter
                 : {{ statsDossiersTraites.nb_dossiers - statsDossiersTraites.nb_traites }}
                 / {{ statsDossiersTraites.nb_dossiers }}</label>
-            <button formaction="{{ path('dossiersCandidats') }}" class="btn btn-outline-primary btn-block mx-auto">
+            <button class="btn btn-primary" formaction="{{ path('dossiersCandidats') }}" class="btn btn-outline-primary btn-block mx-auto">
                 Consulter les dossiers
             </button>
         </form>
