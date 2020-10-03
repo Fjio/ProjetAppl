@@ -1,0 +1,30 @@
+<div class="container">
+		{{ form_start(form) }}
+		{# Champs à remplir #}
+		<div class="my-custom-class-for-errors">
+			{{ form_errors(formEvaluationCandidat) }}
+		</div>
+
+		<div class="row">
+			{{ form_row(formEvaluationCandidat.noteAutobiographie) }}
+		</div>
+		<div class="row">
+			{{ form_row(formEvaluationCandidat.noteAppreciationDossier) }}
+		</div>
+		<div class="row">
+			{{ form_row(formEvaluationCandidat.commentaireDossier) }}
+		</div>
+		<div class="row">
+			{{ form_row(formEvaluationCandidat.estTraite) }}
+		</div>
+
+		{# Champs cachés #}
+		<div class="row">
+			{{ form_row(formEvaluationCandidat.idEleve) }}
+		</div>
+		<div class="row">
+			{{ form_row(formEvaluationCandidat.idCampagne) }}
+		</div>
+
+		{{ form_end(formEvaluationCandidat) }}
+</div>
