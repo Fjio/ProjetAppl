@@ -9,7 +9,7 @@
 ## Improvements
 - [ ] check how eleves is supposed to render as it is not finished yet
 - [ ] improve mobile users' UI
-
+- [x] fix favicon management
 ## Background processes
 - [ ] define what to show in "Documentation" to deliver for the 16/10
 - [ ] and mostly have fun 😁
