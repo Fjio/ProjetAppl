@@ -4,45 +4,45 @@
 namespace App\Controller;
 
 use App\Entity\Utilisateur as User;
-use App\Form\EleveInscription;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class RegistrationController extends AbstractController
 {
     /**
+     * Undocumented function
      * @Route("/inscription", name="app_inscription")
+     * @param Request $request
+     * @param null $idPersonne
+     * @return void
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function inscrireCandidat(Request $request, $idPersonne = null)
     {
-        $user = new User();
-        $form = $this->createForm(EleveInscription::class, $user);
+        $defaultData = ['idPersonne' => $idPersonne];
+
+        $form = $this->createFormBuilder($defaultData)
+            ->add('idPersonne', HiddenType::class)
+            ->add('username', TextType::class, ['label'=>'Adresse Mail'])
+            ->add('plainPassword', RepeatedType::class, array(
+                'type' => PasswordType::class,
+                'first_options'  => array('label' => 'Mot de passe'), 
+                'second_options' => array('label' => 'Répéter le mot de passe'), 
+            ))
+            ->getForm();
+
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
-            $user->setPassword(
-                $passwordEncoder->encodePassword(
-                    $user,
-                    $form->get('plainPassword')->getData()
-                )
-            );
-
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
-
-            
-            // do anything else you need here, like send an email
-            // in this example, we are just redirecting to the homepage
-            return $this->redirectToRoute('app_index');
+            return $this->redirectToRoute('app_login');
         }
-
-        return $this->render('inscription/inscription.html.twig', [
-            'inscriptionForm' => $form->createView(),
-        ]);
+        return $this->render('inscription/index.html.twig', [
+            'inscriptionForm' => $form->createView()]);
     }
 }
