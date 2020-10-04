@@ -36,6 +36,12 @@ The default login information for the eleve user is:
 The default login information for the prof user is:
 `prof1@prof.fr`:`prof`
 
+To update doctrine database schema, run the following from the project root:
+
+```bash
+php bin/console doctrine:schema:update --force
+```
+
 ## Server launch
 
 To start the server, run the following from the project root (CLI needed) :

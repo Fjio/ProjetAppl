@@ -38,7 +38,7 @@ class Utilisateur implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="username", type="string", nullable=false)
+     * @ORM\Column(name="username", type="string", nullable=false,unique=true)
      */
     private $username;
 
