@@ -40,6 +40,14 @@ class RegistrationController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            // Met à jour la candidature avec les notes
+            $data = $form->getData();
+            //$candidatureEleve -> setNoteAutobiographie($data['noteAutobiographie']);
+
+            // Sauvegarde la candidature
+            //$entityManager = $this->getDoctrine()->getManager();
+            //$entityManager->persist($candidatureEleve);
+            //$entityManager->flush();
             return $this->redirectToRoute('app_login');
         }
         return $this->render('inscription/index.html.twig', [
