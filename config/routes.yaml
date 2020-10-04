@@ -1,3 +1,6 @@
+#home:
+ # path: /
+
 login:
   path: /
   controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction

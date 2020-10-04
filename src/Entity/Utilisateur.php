@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 use App\Entity\Personne;
 
@@ -20,6 +21,12 @@ class Utilisateur implements UserInterface
      * @ORM\Column(name="password", type="string", nullable=false)
      */
     private $password;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Length(max=4096)
+     */
+    private $plainPassword;
 
     /**
      * @var string
@@ -46,6 +53,16 @@ class Utilisateur implements UserInterface
      * })
      */
     private $idPersonne;
+
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword($password)
+    {
+        $this->plainPassword = $password;
+    }
 
     public function getPassword(): ?string
     {
