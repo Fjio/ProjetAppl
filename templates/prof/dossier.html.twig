@@ -42,17 +42,17 @@
         <tbody>
         {% for note in notes %}
             <tr>
-                <td>
+                <td class="align-middle">
                     {% if note.idOption is empty %}
                         {{ note.nomMatiere.nomMatiere }}
                     {% else %}
                         {{ note.nomMatiere.nomMatiere }} - {{ note.idOption.acronymeOption }}
                     {% endif %}
                 </td>
-                <td>{% if note.noteMinClasse is empty %}-{% else %}{{ note.noteMinClasse }}{% endif %}</td>
-                <td>{% if note.noteMaxClasse is empty %}-{% else %}{{ note.noteMaxClasse }}{% endif %}</td>
-                <td>{% if note.noteMoyClasse is empty %}-{% else %}{{ note.noteMoyClasse }}{% endif %}</td>
-                <td>{{ note.noteEleve }} </td>
+                <td class="align-middle">{% if note.noteMinClasse is empty %}-{% else %}{{ note.noteMinClasse }}{% endif %}</td>
+                <td class="align-middle">{% if note.noteMaxClasse is empty %}-{% else %}{{ note.noteMaxClasse }}{% endif %}</td>
+                <td class="align-middle">{% if note.noteMoyClasse is empty %}-{% else %}{{ note.noteMoyClasse }}{% endif %}</td>
+                <td class="align-middle">{{ note.noteEleve }} </td>
             </tr>
         {% endfor %}
         </tbody>
@@ -75,14 +75,14 @@
         <tbody>
             {% for annee in anneesScolaires %}
                 <tr>
-                    <td>{{ annee.annee }}</td>
-                    <td>{{ annee.classe }}</td>
-                    <td>{% if annee.specialite is empty %}-{% else %}{{ annee.specialite }}{% endif %}</td>
-                    <td>{{ annee.etablissement }}</td>
-                    <td>{{ annee.numeroRue }}, {{ annee.nomRue }}</td>
-                    <td>{{ annee.ville }}</td>
-                    <td>{{ annee.codePostal }}</td>
-                    <td>{{ annee.pays }}</td>
+                    <td class="align-middle">{{ annee.annee }}</td>
+                    <td class="align-middle">{{ annee.classe }}</td>
+                    <td class="align-middle">{% if annee.specialite is empty %}-{% else %}{{ annee.specialite }}{% endif %}</td>
+                    <td class="align-middle">{{ annee.etablissement }}</td>
+                    <td class="align-middle">{{ annee.numeroRue }}, {{ annee.nomRue }}</td>
+                    <td class="align-middle">{{ annee.ville }}</td>
+                    <td class="align-middle">{{ annee.codePostal }}</td>
+                    <td class="align-middle">{{ annee.pays }}</td>
                 </tr>
             {% endfor %}
         </tbody>

@@ -25,21 +25,21 @@
         <tbody>
         {% for dossier in listeDossiers %}
             <tr>
-                <td>{{ dossier.numeroDossier }}</td>
-                <td>{{ dossier.noteMoyenneGenerale }} </td>
-                <td>{{ dossier.noteAutobiographie }} </td>
-                <td>{{ dossier.noteAppreciationDossier }} </td>
-                <td>
+                <td class="align-middle">{{ dossier.numeroDossier }}</td>
+                <td class="align-middle">{{ dossier.noteMoyenneGenerale }} </td>
+                <td class="align-middle">{{ dossier.noteAutobiographie }} </td>
+                <td class="align-middle">{{ dossier.noteAppreciationDossier }} </td>
+                <td class="align-middle">
                     {% if dossier.estTraite %}
                         Traité
                     {% else %}
                         Non traité
                     {% endif %}
                 </td>
-                <td>
+                <td class="align-middle">
                     <form method="POST">
                         <input type="hidden" name="idEleve" value="{{ dossier.idEleve }}">
-                        <button class="btn btn-light btn-block" formaction="{{ path('afficheCandidat') }}">Consulter
+                        <button class="btn btn-primary" formaction="{{ path('afficheCandidat') }}">Consulter
                         </button>
                     </form>
                 </td>
