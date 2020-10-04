@@ -18,6 +18,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
+use \Doctrine\DBAL\Exception\UniqueConstraintViolationException as UCVE;
+use Symfony\Component\Form\FormError;
+
 class RegistrationController extends AbstractController
 {
     private $passwordEncoder;
@@ -67,8 +70,14 @@ class RegistrationController extends AbstractController
             $eleveUser -> setPassword($this->passwordEncoder->encodePassword($eleveUser,$data['plainPassword']));
             $manager -> persist($eleveUser);
             //flush it
-            $manager->flush();
-            return $this->redirectToRoute('app_login');
+            try {
+                $manager->flush();
+                return $this -> render('inscription/accepte.html.twig');
+            } catch (UCVE $e){
+                //for now, "your mail is in use" message - check #GDPR
+                $mailError = new FormError("Vous avez déjà un compte");
+                $form->get('username')->addError($mailError);
+            }
         }
         return $this->render('inscription/index.html.twig', [
             'inscriptionForm' => $form->createView()]);
