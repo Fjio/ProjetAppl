@@ -11,7 +11,7 @@
             {# need to reconnect or change page, redirection still to make hereafter #}
             {% if app.user %}
                 <div class="mb-3">
-                    Connecté en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
+                    Connecté en tant que {{ app.user.username }}, cliquez sur la barre du dessus pour revenir à l'accueil ou déconnectez vous
                 </div>
             {% endif %}
 
