@@ -2,11 +2,13 @@
 
 {% block title %}CINESUP - Candidature {{ dossier.numeroDossier }}{% endblock %}
 
-{% block scripts %}
+{% block javascripts %}
+	<script type="text/javascript" src="{{ asset('js/DataTables/dossier.js') }}"></script>
 {% endblock %}
 
 {% block body %}
-    <form><button class="btn btn-primary" formAction="{{ path('dossiersCandidats') }}">Retour</button></form>
+    <div class="container">
+    <form><button class="btn btn-primary mt-2 mb-4" formAction="{{ path('dossiersCandidats') }}">Retour</button></form>
     <h1>Dossier {{ dossier.numeroDossier }}</h1>
     <p>Etat du dossier :
         {% if dossier.estTraite %}
@@ -26,7 +28,7 @@
             {{ dossier.noteMoyenneGenerale }}
         {% endif %}
     </p>
-    <p>Notes :</p>
+    <h3 class="mt-5 mb-3">Notes :</h3>
     <table id="notes" class="table table-dark">
         {# Header #}
         <thead class="bg-info">
@@ -58,7 +60,7 @@
         </tbody>
     </table>
 
-    <p>Parcours scolaire :</p>
+    <h3 class="mt-5 mb-3">Parcours scolaire :</h3>
     <table id="anneesScolaires" class="table table-dark">
         <thead class="bg-info">
             <tr>
@@ -87,10 +89,10 @@
             {% endfor %}
         </tbody>
     </table>
-    <p>Noter le dossier :</p>
+    <h3 class="mt-5 mb-3">Noter le dossier :</h3>
     {{ render(
         controller('App\\Controller\\DossierCandidatController::evaluerCandidat', 
     {'idEleve': idEleve, 'idCampagne': idCampagne})
     ) }}
-    {# idk yet how to customize this #}
+    </div>
 {% endblock %}
