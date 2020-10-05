@@ -2,7 +2,8 @@
 
 {% block title %}Campagne de {{campagneActuelle.annee}}{% endblock %}
 
-{% block scripts %}
+{% block javascripts %}
+<script type="text/javascript" src="{{ asset('js/DataTables/dossiersCandidats.js') }}"></script>
 {% endblock %}
 
 {% block body %}
@@ -17,7 +18,7 @@
 
   <h2 style="margin:20px"> {{nombreDeDossiersTraites}} / {{nombreDeDossiers}} dossiers traités</h2>
 
-  <table id="dossiersCampagne" class="table table-dark">
+  <table id="tableDossiers" class="table table-dark">
     <thead class="bg-info">
       <tr>
         <th>Numéro de dossier</th>
