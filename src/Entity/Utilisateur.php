@@ -43,6 +43,26 @@ class Utilisateur implements UserInterface
     private $username;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="creationDate", type="date", nullable=false)
+     */
+    private $creationDate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="validatedUser", type="boolean", nullable=false)
+     */
+    private $validatedUser;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="token", type="string", nullable=false)
+     */
+    private $token;
+    /**
      * @var Personne
      *
      * @ORM\Id
@@ -54,6 +74,8 @@ class Utilisateur implements UserInterface
      */
     private $idPersonne;
 
+    
+    
     public function getPlainPassword()
     {
         return $this->plainPassword;
