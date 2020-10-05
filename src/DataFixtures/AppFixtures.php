@@ -36,7 +36,7 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-
+        
 
         // Qualité du responsable legal
         $qualite = new QualiteResponsableLegal();
@@ -117,8 +117,12 @@ class AppFixtures extends Fixture
         $eleveUser -> setIdPersonne($elevePersonne);
         $eleveUser -> setPassword($this->passwordEncoder->encodePassword($eleveUser,'eleve'));
         $eleveUser -> setUsername($elevePersonne -> getMail());
+        $eleveUser -> setCreationDate(new \Datetime("2020-10-04"));
+        $eleveUser -> setToken("1");
+        $eleveUser -> setValidatedUser(TRUE);
         $manager -> persist($eleveUser);
-
+        $manager -> flush();
+/*
         $professeurUser = new Utilisateur();
         $professeurUser -> setRoles($professeurRole);
         $professeurUser -> setIdPersonne($professeurPersonne);
@@ -541,6 +545,6 @@ class AppFixtures extends Fixture
         $nMatiere2->setIdOption($specialite2);
         $manager->persist($nMatiere2);
 
-        $manager->flush();
-    }
+        $manager->flush(); */
+    } 
 }

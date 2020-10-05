@@ -74,7 +74,35 @@ class Utilisateur implements UserInterface
      */
     private $idPersonne;
 
-    
+    public function getCreationDate()
+    {
+        return $this->creationDate;
+    }
+
+    public function setCreationDate($creationDate)
+    {
+        $this->creationDate = $creationDate;
+    }
+
+    public function getValidatedUser()
+    {
+        return $this->validatedUser;
+    }
+
+    public function setValidatedUser($validatedUser)
+    {
+        $this->validatedUser = $validatedUser;
+    }
+
+    public function getToken()
+    {
+        return $this->token;
+    }
+
+    public function setToken($token)
+    {
+        $this->token = $token;
+    }
     
     public function getPlainPassword()
     {
