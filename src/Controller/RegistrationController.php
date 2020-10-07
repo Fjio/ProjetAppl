@@ -79,7 +79,10 @@ class RegistrationController extends AbstractController
             //flush it
             try {
                 $manager->flush();
-                return $this -> render('inscription/accepte.html.twig');
+                $response= $this->forward('App\Controller\MailerController::sendEmailOnRegistration',[
+                    'token' => $token
+                ]);
+                return $response;
             } catch (UCVE $e){
                 //for now, "your mail is in use" message - check #GDPR
                 $mailError = new FormError("Vous avez déjà un compte");
