@@ -70,7 +70,10 @@ class RegistrationController extends AbstractController
             $eleveUser -> setUsername($data['username']); 
             $eleveUser -> setPassword($this->passwordEncoder->encodePassword($eleveUser,$data['plainPassword']));
             $eleveUser -> setCreationDate(new DateTime());
-            $eleveUser -> setToken("1");
+            //token generation
+            $length = 32;
+            $token = bin2hex(random_bytes($length));
+            $eleveUser -> setToken($token);
             $eleveUser -> setValidatedUser(FALSE); 
             $manager -> persist($eleveUser);
             //flush it

@@ -6,9 +6,9 @@
 - [x] flushing data in database 
 - [x] register success page render
 ## Verification
-- [ ] change user's database to include a "verified mail" token 
+- [x] change user's database to include a "verified mail" token\
 added, for now, a "creationDate (type Date)", a "validatedUser (type bool)", a "token (type string)"
-- [ ] token generation for verification & email validation
+- [x] token generation for verification (& email validation in the future)
 - [ ] see how to use the mailer !
 - [ ] force users to verify before editing their data...
 - [ ] add an autodeletion of non-verified users after ? one week ? this means implementing an registering date too
