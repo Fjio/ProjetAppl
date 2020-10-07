@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use App\Entity\Utilisateur;
 use App\Entity\Personne;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -68,6 +69,9 @@ class RegistrationController extends AbstractController
             $eleveUser -> setIdPersonne($elevePersonne);
             $eleveUser -> setUsername($data['username']); 
             $eleveUser -> setPassword($this->passwordEncoder->encodePassword($eleveUser,$data['plainPassword']));
+            $eleveUser -> setCreationDate(new DateTime());
+            $eleveUser -> setToken("1");
+            $eleveUser -> setValidatedUser(FALSE); 
             $manager -> persist($eleveUser);
             //flush it
             try {

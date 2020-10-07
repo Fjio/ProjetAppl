@@ -121,13 +121,15 @@ class AppFixtures extends Fixture
         $eleveUser -> setToken("1");
         $eleveUser -> setValidatedUser(TRUE);
         $manager -> persist($eleveUser);
-        $manager -> flush();
-/*
+
         $professeurUser = new Utilisateur();
         $professeurUser -> setRoles($professeurRole);
         $professeurUser -> setIdPersonne($professeurPersonne);
         $professeurUser -> setPassword($this->passwordEncoder->encodePassword($professeurUser,'prof'));
         $professeurUser -> setUsername($professeurPersonne -> getMail());
+        $professeurUser -> setCreationDate(new \Datetime("2020-10-04"));
+        $professeurUser -> setToken("1");
+        $professeurUser -> setValidatedUser(TRUE);
         $manager -> persist($professeurUser);
 
         $professeurUser2 = new Utilisateur();
@@ -135,6 +137,9 @@ class AppFixtures extends Fixture
         $professeurUser2 -> setIdPersonne($professeurPersonne2);
         $professeurUser2 -> setPassword($this->passwordEncoder->encodePassword($professeurUser2,'prof'));
         $professeurUser2 -> setUsername($professeurPersonne2 -> getMail());
+        $professeurUser2 -> setCreationDate(new \Datetime("2020-10-04"));
+        $professeurUser2 -> setToken("1");
+        $professeurUser2 -> setValidatedUser(TRUE);
         $manager -> persist($professeurUser2);
 
         $adminUser = new Utilisateur();
@@ -142,6 +147,9 @@ class AppFixtures extends Fixture
         $adminUser -> setIdPersonne($adminPersonne);
         $adminUser -> setPassword($this->passwordEncoder->encodePassword($adminUser,'admin'));
         $adminUser -> setUsername($adminPersonne -> getMail());
+        $adminUser -> setCreationDate(new \Datetime("2020-10-04"));
+        $adminUser -> setToken("1");
+        $adminUser -> setValidatedUser(TRUE);
         $manager -> persist($adminUser);
 
         //Responsable Legal
@@ -545,6 +553,6 @@ class AppFixtures extends Fixture
         $nMatiere2->setIdOption($specialite2);
         $manager->persist($nMatiere2);
 
-        $manager->flush(); */
+        $manager->flush(); 
     } 
 }
