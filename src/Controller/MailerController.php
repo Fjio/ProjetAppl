@@ -38,13 +38,12 @@ class MailerController extends AbstractController
             $mail->setFrom($_ENV['MAILER_MAIL'], 'Pierre');
             $mail->addAddress($_ENV['MAILER_MAIL'], 'PierreRec');     // Add a recipient
 
-            $mail->isHTML(true);                                  // Set email format to HTML
+            $mail->isHTML(true);                                 // Set email format to HTML
             $mail->Subject = 'Here is the subject';
-            $mail->Body    = "This is the HTML message body <b>in bold!</b> {$token}";
-            $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
+            $mail->Body    = "lien : 127.0.0.1:8000/verification/{$token}"; //To be modified to env var
+            $mail->AltBody = "lien : 127.0.0.1:8000/verification/{$token}"; //And add a href link
             $mail->send();
-            //echo 'Message has been sent';
+            echo 'Message has been sent';
         } catch (Exception $e) {
             echo "Email non envoyé. Mailer Error: {$mail->ErrorInfo} ; contactez un administrateur";
         }

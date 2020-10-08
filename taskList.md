@@ -10,7 +10,6 @@
 added, for now, a "creationDate (type Date)", a "validatedUser (type bool)", a "token (type string)"
 - [x] token generation for verification (& email validation in the future)
 - [x] see how to use the mailer !
-- [ ] correct the mailer so as to use the real emails (passing parameters)
 - [ ] send an url of verification with embedded token
 - [ ] force users to verify before editing their data...
 - [ ] add an autodeletion of non-verified users after ? one week ? this means implementing an registering date too (done)
@@ -41,3 +40,6 @@ added, for now, a "creationDate (type Date)", a "validatedUser (type bool)", a "
 - [ ] Project report skeleton due for the 04/12
 - [ ] Final report due for the 05/01
 - [ ] Final oral exam due for the 08/01
+
+## In the future
+- [ ] correct the mailer so as to use the real emails (passing parameters)
