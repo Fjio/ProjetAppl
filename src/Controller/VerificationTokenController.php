@@ -28,10 +28,20 @@ class VerificationTokenController extends AbstractController
      */
     public function tokenVerification(string $token): Response
     {
-      $userArray = $this->UtilisateurRepository->findByToken($token);
+      $userArray = $this -> UtilisateurRepository -> findByToken($token);
+      $this -> verifyUser($userArray);
       $user = array_pop($userArray);
+      print_r($user);
       $username = $user['username'];
       return $this->render('inscription/valide.html.twig',['username' => $username]);
     }
 
+    public function verifyUser(Utilisateur $eleveUser)
+    {
+        $manager = $this->getDoctrine()->getManager();
+        $eleveUser -> setValidatedUser(TRUE); 
+        $manager -> persist($eleveUser);
+        $manager->flush();
+
+    } 
 }

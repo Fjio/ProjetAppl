@@ -33,9 +33,9 @@ class UtilisateurRepository extends ServiceEntityRepository
         return $qb->getQuery()->getArrayResult();
     }
 
-    // /**
-    //  * @return Utilisateur Returns a Utilisateur object
-    //  */
+     /**
+     * @return Utilisateur Returns a Utilisateur object
+      */
     public function findByToken(string $token)
     {
         return $this->createQueryBuilder('u')
