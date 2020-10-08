@@ -11,8 +11,6 @@ added, for now, a "creationDate (type Date)", a "validatedUser (type bool)", a "
 - [x] token generation for verification (& email validation in the future)
 - [x] see how to use the mailer !
 - [x] send an url of verification with embedded token
-- force users to verify before editing their data... -> not working eleve page for now...
-- add an autodeletion of non-verified users after ? one week ? this means implementing an registering date too (done in database) -> not a priority
 
 ## Improvements
 - [ ] check how eleves is supposed to render as it is not finished yet
@@ -31,11 +29,11 @@ added, for now, a "creationDate (type Date)", a "validatedUser (type bool)", a "
 - [ ] and mostly have fun 😁
 
 ## Do not forget announced specs
-- [ ] Create a registration page with coherence due to existing pages
-- [ ] Manage registrations with the database
-- [ ] Manage verification email sending
+- [x] Create a registration page with coherence due to existing pages
+- [x] Manage registrations with the database
+- [x] Manage verification email sending
 - [ ] Manage robots attacks on the register page
-- [ ] Correct the former group code
+- [x] Correct the former group code
 - [ ] Documentation due for the 16/10
 - [ ] Project report skeleton due for the 04/12
 - [ ] Final report due for the 05/01
@@ -43,3 +41,5 @@ added, for now, a "creationDate (type Date)", a "validatedUser (type bool)", a "
 
 ## In the future
 - [ ] correct the mailer so as to use the real emails (passing parameters)
+- [ ] force users to verify before editing their data... -> not working eleve page for now...
+- [ ]add an autodeletion of non-verified users after ? one week ? this means implementing an registering date too (done in database) -> not a priority for today
