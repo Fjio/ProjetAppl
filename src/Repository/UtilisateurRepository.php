@@ -47,7 +47,19 @@ class UtilisateurRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+    public function verifyUser(string $token)
+    {
+        $qb = $this->createQueryBuilder('u');
+        $q = $qb 
+            ->update('App\Entity\Utilisateur','u')
+            ->set('u.validatedUser', 'TRUE')
+            ->Where('u.token = :val')
+            ->setParameter('val', $token)
+            ->getQuery();
 
+        $p = $q->execute();
+        ;
+    }
     /*
     public function findOneBySomeField($value): ?Utilisateur
     {
