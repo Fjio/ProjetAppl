@@ -1,6 +1,7 @@
 <?php
 
 // app/src/Controller/RegistrationController.php
+
 namespace App\Controller;
 
 use App\Entity\Utilisateur;
@@ -21,6 +22,7 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 use \Doctrine\DBAL\Exception\UniqueConstraintViolationException as UCVE;
 use Symfony\Component\Form\FormError;
+use App\Form\ReCaptchaType;
 
 class RegistrationController extends AbstractController
 {
