@@ -11,8 +11,9 @@ added, for now, a "creationDate (type Date)", a "validatedUser (type bool)", a "
 - [x] token generation for verification (& email validation in the future)
 - [x] see how to use the mailer !
 - [ ] correct the mailer so as to use the real emails (passing parameters)
+- [ ] send an url of verification with embedded token
 - [ ] force users to verify before editing their data...
-- [ ] add an autodeletion of non-verified users after ? one week ? this means implementing an registering date too
+- [ ] add an autodeletion of non-verified users after ? one week ? this means implementing an registering date too (done)
 
 ## Improvements
 - [ ] check how eleves is supposed to render as it is not finished yet

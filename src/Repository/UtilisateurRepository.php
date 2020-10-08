@@ -34,21 +34,19 @@ class UtilisateurRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Utilisateur[] Returns an array of Utilisateur objects
+    //  * @return Utilisateur Returns a Utilisateur object
     //  */
-    /*
-    public function findByExampleField($value)
+    public function findByToken(string $token)
     {
         return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('u.id', 'ASC')
-            ->setMaxResults(10)
+            ->andWhere('u.token = :val')
+            ->setParameter('val', $token)
+            ->select('u.username')
+            ->setMaxResults(1)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Utilisateur
