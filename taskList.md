@@ -10,9 +10,9 @@
 added, for now, a "creationDate (type Date)", a "validatedUser (type bool)", a "token (type string)"
 - [x] token generation for verification (& email validation in the future)
 - [x] see how to use the mailer !
-- [ ] send an url of verification with embedded token
-- [ ] force users to verify before editing their data...
-- [ ] add an autodeletion of non-verified users after ? one week ? this means implementing an registering date too (done)
+- [x] send an url of verification with embedded token
+- force users to verify before editing their data... -> not working eleve page for now...
+- add an autodeletion of non-verified users after ? one week ? this means implementing an registering date too (done in database) -> not a priority
 
 ## Improvements
 - [ ] check how eleves is supposed to render as it is not finished yet
