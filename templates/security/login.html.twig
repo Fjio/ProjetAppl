@@ -11,7 +11,6 @@
 			{% endif %}
 
 			<div class="form-row">
-
 				<div class="col-8 offset-4 mx-auto">
 					<form method="POST">
 						<div class="form-group mx-auto" style="width: 250px;">
@@ -20,6 +19,8 @@
 							<input type="text" style="margin-bottom:10px" placeholder="Email" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>
 							<label for="inputPassword" class="sr-only">Mot de passe</label>
 							<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
+							<div class="g-recaptcha" data-sitekey={{gg_recaptcha_site_key}} data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
+							<div class="help-block with-errors"></div>
 						</div>
 					</form>
 					<button class="btn btn-outline-primary btn-block mx-auto" style="width: 200px;" type="submit" formaction="{{ path('app_login') }}">Se connecter
@@ -32,15 +33,15 @@
 			type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
 		{#
-		                Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-		                See https://symfony.com/doc/current/security/remember_me.html
-		
-		                <div class="checkbox mb-3">
-		                    <label>
-		                        <input type="checkbox" name="_remember_me"> Remember me
-		                    </label>
-		                </div>
-		            #}
+				                Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+				                See https://symfony.com/doc/current/security/remember_me.html
+				
+				                <div class="checkbox mb-3">
+				                    <label>
+				                        <input type="checkbox" name="_remember_me"> Remember me
+				                    </label>
+				                </div>
+				            #}
 		</div>
 	</form>
 {% endblock %}

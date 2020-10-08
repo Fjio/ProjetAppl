@@ -8,7 +8,7 @@ use PHPMailer\PHPMailer\Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-require '../vendor/autoload.php';
+//require '../vendor/autoload.php';
 
 
 

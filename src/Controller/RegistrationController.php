@@ -42,6 +42,7 @@ class RegistrationController extends AbstractController
         $defaultData = ['idPersonne' => $idPersonne];
 
         $form = $this->createFormBuilder($defaultData)
+            ->add('captcha', ReCaptchaType::class, ['type' => 'invisible'])
             ->add('idPersonne', HiddenType::class)
             ->add('username', EmailType::class, ['label'=>'Adresse Mail'])
             ->add('plainPassword', RepeatedType::class, array(
