@@ -18,7 +18,7 @@ class MailerController extends AbstractController
     /**
      * @param string $token
      */
-    public function sendEmailOnRegistration(string $token)
+    public function sendEmailOnRegistration(string $token, string $username)
     {
         // Instantiation and passing `true` enables exceptions
         $mail = new PHPMailer(true);
@@ -36,7 +36,7 @@ class MailerController extends AbstractController
 
             //Recipients
             $mail->setFrom($_ENV['MAILER_MAIL'], 'Pierre');
-            $mail->addAddress($_ENV['MAILER_MAIL'], 'PierreRec');     // Add a recipient
+            $mail->addAddress($username, 'PierreRec');     // Add a recipient
 
             $mail->isHTML(true);                                 // Set email format to HTML
             $mail->Subject = 'Here is the subject';

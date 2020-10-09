@@ -83,7 +83,8 @@ class RegistrationController extends AbstractController
             try {
                 $manager->flush();
                 $response= $this->forward('App\Controller\MailerController::sendEmailOnRegistration',[
-                    'token' => $token
+                    'token' => $token,
+                    'username' => $data['username']
                 ]);
                 return $response;
             } catch (UCVE $e){
