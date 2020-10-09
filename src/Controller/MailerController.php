@@ -35,8 +35,8 @@ class MailerController extends AbstractController
             $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
             //Recipients
-            $mail->setFrom($_ENV['MAILER_MAIL'], 'Pierre');
-            $mail->addAddress($username, 'PierreRec');     // Add a recipient
+            $mail->setFrom($_ENV['MAILER_MAIL'], "Lycée Guist'hau");
+            $mail->addAddress($username);     // Add a recipient
 
             $mail->isHTML(true);                                 // Set email format to HTML
             $mail->Subject = 'Here is the subject';
