@@ -32,7 +32,7 @@ added, for now, a "creationDate (type Date)", a "validatedUser (type bool)", a "
 - [x] Create a registration page with coherence due to existing pages
 - [x] Manage registrations with the database
 - [x] Manage verification email sending
-- [ ] Manage robots attacks on the register page
+- [x] Manage robots attacks on the register page
 - [x] Correct the former group code
 - [ ] Documentation due for the 16/10
 - [ ] Project report skeleton due for the 04/12
