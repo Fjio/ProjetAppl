@@ -1,47 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Connexion
-{% endblock %}
+{% block title %}Connexion{% endblock %}
 
 {% block body %}
-	<form method="post" class="form-signin text-center">
-		<div class="m-auto">
-			{% if error %}
-				<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-			{% endif %}
+<div class="container login-container">
+  <form method="post" class="row my-auto">
+    {% if error %}
+    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+    <div class="login-form col-6 mx-auto">
+        <div class="card">
+          <div class="card-body">
+            <div class="form-group d-flex flex-column">
+            <div class="mb-14">
+              <h1 class="h4 mx-auto font-weight-normal">Connectez-vous</h1></div>
+              <label for="inputUsername" class=" mx-auto sr-only">Email</label>
+              <input type="text" placeholder="Email" value="{{ last_username }}" name="username" id="inputUsername" class="form-control mb-2" required autofocus>
+              <label for="inputPassword" class="sr-only">Mot de passe</label>
+              <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Mot de passe"
+                required>
+              <div class="g-recaptcha" data-sitekey={{gg_recaptcha_site_key}} data-callback="verifyRecaptchaCallback"
+                data-expired-callback="expiredRecaptchaCallback"></div>
+              <div class="help-block with-errors"></div>
+            </div>
+            <button class="btn btn-outline-primary btn-block mx-auto" style="width: 200px;" type="submit"
+              formaction="{{ path('app_login') }}">Se connecter
+            </button>
+          </div>
+      </div>
+    </div>
 
-			<div class="form-row">
-				<div class="col-8 offset-4 mx-auto">
-					<form method="POST">
-						<div class="form-group mx-auto" style="width: 250px;">
-							<h1 class="h4 mx-auto font-weight-normal">Connectez-vous</h1>
-							<label for="inputUsername" class=" mx-auto sr-only">Email</label>
-							<input type="text" style="margin-bottom:10px" placeholder="Email" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>
-							<label for="inputPassword" class="sr-only">Mot de passe</label>
-							<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
-							<div class="g-recaptcha" data-sitekey={{gg_recaptcha_site_key}} data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
-							<div class="help-block with-errors"></div>
-						</div>
-					</form>
-					<button class="btn btn-outline-primary btn-block mx-auto" style="width: 200px;" type="submit" formaction="{{ path('app_login') }}">Se connecter
-					</button>
-				</div>
-			</div>
 
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-			<input
-			type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+    {#
+      Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+      See https://symfony.com/doc/current/security/remember_me.html
 
-		{#
-				                Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-				                See https://symfony.com/doc/current/security/remember_me.html
-				
-				                <div class="checkbox mb-3">
-				                    <label>
-				                        <input type="checkbox" name="_remember_me"> Remember me
-				                    </label>
-				                </div>
-				            #}
-		</div>
-	</form>
+      <div class="checkbox mb-3">
+          <label>
+              <input type="checkbox" name="_remember_me"> Remember me
+          </label>
+      </div>
+    #}
+</div>
+</form>
+</div>
 {% endblock %}

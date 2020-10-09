@@ -1,4 +1,10 @@
-
+body{
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
 #eleve_Enregistrer, #annee_scolaire_Enregistrer, #notes_matiere_Enregistrer,#form_Soumettre,#candidature_section_Enregistrer {
     border: 1px solid #662F9C;
@@ -23,4 +29,19 @@ fieldset {
 #nav-eleve {
     border: 1px solid #A689B1;
     border-radius: 5px;
+}
+
+.login-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+.login-form{
+  height: 100%;
+}
+.login-form .card{
+  padding: 1.5rem 2.5rem;
+}
+.login-form .card .card-body {
+  padding: 1.5rem 2.5rem;
 }
