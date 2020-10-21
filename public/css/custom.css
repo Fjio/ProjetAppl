@@ -45,3 +45,12 @@ fieldset {
 .login-form .card .card-body {
   padding: 1.5rem 2.5rem;
 }
+
+.nav-custom {
+  background-color: #ffffff;
+}
+
+.nav-link:hover {
+  background-color: #662F9C;
+  color : #FFFFFF;
+}

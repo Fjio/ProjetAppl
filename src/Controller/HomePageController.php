@@ -57,7 +57,7 @@ class HomePageController extends AbstractController
     public function eleveHomePage(): \Symfony\Component\HttpFoundation\Response
     {
         // A changer
-        return $this->render('home_page/index.html.twig', ['controller_name' => 'test_homepage_eleve']);
+        return $this->render('etudiant_accueil/index.html.twig', ['controller_name' => 'test_homepage_eleve']);
     }
 
         /**
