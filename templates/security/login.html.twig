@@ -8,12 +8,12 @@
     {% if error %}
     <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
-    <div class="login-form col-6 mx-auto">
-        <div class="card">
+    <div class="login-form col-12 mx-auto">
+        <div class="card mt-0">
           <div class="card-body">
             <div class="form-group d-flex flex-column">
             <div class="mb-14">
-              <h1 class="h4 mx-auto font-weight-normal">Connectez-vous</h1></div>
+              <h1 class="h4 mx-auto font-weight-normal text-center">Connectez-vous</h1></div>
               <label for="inputUsername" class=" mx-auto sr-only">Email</label>
               <input type="text" placeholder="Email" value="{{ last_username }}" name="username" id="inputUsername" class="form-control mb-2" required autofocus>
               <label for="inputPassword" class="sr-only">Mot de passe</label>

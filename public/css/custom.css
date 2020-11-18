@@ -4,6 +4,7 @@ body{
   height: 100vh;
   display: flex;
   flex-direction: column;
+  min-width:400px;
 }
 
 #eleve_Enregistrer, #annee_scolaire_Enregistrer, #notes_matiere_Enregistrer,#form_Soumettre,#candidature_section_Enregistrer {
