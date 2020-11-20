@@ -5,11 +5,13 @@
 
 
 {% block body %}
-    <div class="container col-6 offset-3">
-    <h1>Mon parcours</h1>
+<div class="row justify-content-center">
+    <div class="col-md-auto mt-2">
+        <h1>Mon parcours</h1>
     </div>
+</div>
 <div class="row">
-    <div class="container col-2" id="nav-eleve">
+    <div class="container col-2 mt-4 mb-4" id="nav-eleve">
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="{{ path('eleve_homepage') }}" role="tab" aria-controls="v-pills-home" aria-selected="false">Accueil</a>
             <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="{{ path('etudiant_dossier_administratif') }}" role="tab" aria-controls="v-pills-home" aria-selected="false">Administratif</a>
@@ -19,9 +21,9 @@
             <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="{{ path('etudiant_dossier_validation') }}" role="tab" aria-controls="v-pills-settings" aria-selected="false">Validation</a>
         </div>
     </div>
-        <div class="container col-8">
-            {{ form(form) }}
-        </div>
+    <div class="container col-8 mt-4 mb-4">
+        {{ form(form) }}
+    </div>
 </div>
 
 
